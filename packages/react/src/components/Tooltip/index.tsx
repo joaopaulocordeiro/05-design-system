@@ -1,29 +1,26 @@
-import * as Tooltip from '@radix-ui/react-tooltip'
+import * as TooltipRadix from '@radix-ui/react-tooltip'
 import { ComponentProps } from '../../types/ComponentsProps'
 import { ReactNode } from 'react'
+import { ToolTipContent } from './styles'
 
-export type TooltipProps = ComponentProps<typeof Tooltip.Root> & {
+export type TooltipProps = ComponentProps<typeof TooltipRadix.Root> & {
   content: string | ReactNode
 }
 
-export function TooltipComponent({
-  content,
-  children,
-  ...props
-}: TooltipProps) {
+export function Tooltip({ content, children, ...props }: TooltipProps) {
   return (
-    <Tooltip.Provider>
-      <Tooltip.Root {...props}>
-        <Tooltip.Trigger asChild>{children}</Tooltip.Trigger>
-        <Tooltip.Portal>
-          <Tooltip.Content>
+    <TooltipRadix.Provider>
+      <TooltipRadix.Root {...props}>
+        <TooltipRadix.Trigger asChild>{children}</TooltipRadix.Trigger>
+        <TooltipRadix.Portal>
+          <ToolTipContent>
             {content}
-            <Tooltip.Arrow />
-          </Tooltip.Content>
-        </Tooltip.Portal>
-      </Tooltip.Root>
-    </Tooltip.Provider>
+            <TooltipRadix.Arrow />
+          </ToolTipContent>
+        </TooltipRadix.Portal>
+      </TooltipRadix.Root>
+    </TooltipRadix.Provider>
   )
 }
 
-TooltipComponent.displayName = 'Tooltip'
+Tooltip.displayName = 'Tooltip'

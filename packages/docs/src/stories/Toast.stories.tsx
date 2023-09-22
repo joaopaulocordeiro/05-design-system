@@ -31,7 +31,6 @@ export default {
   component: ToastStories,
   args: {
     title: 'Agendamento realizado',
-    description: 'data',
   },
 } as Meta<ToastProps>
 
